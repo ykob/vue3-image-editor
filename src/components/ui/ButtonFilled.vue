@@ -1,17 +1,67 @@
 <script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps({
+  circle: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  size: {
+    type: String,
+    required: false,
+    default: "md",
+    validator: (value: string) => {
+      return ["sm", "md", "lg"].includes(value);
+    },
+  },
+});
+
+const classes = computed(() => {
+  return [
+    "button-filled",
+    `button-filled--${props.size}`,
+    {
+      "button-filled--circle": props.circle,
+    },
+  ]
+});
+
 defineEmits(["click"]);
 </script>
 
 <template>
-  <button class="button-filled" @click="$emit('click', $event)">
+  <button :class="classes" @click="$emit('click', $event)">
     <slot />
   </button>
 </template>
 
 <style scoped>
 .button-filled {
-  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   background-color: #000;
+  border-radius: 9999px;
+}
+.button-filled--sm {
+  height: 32px;
+}
+.button-filled--md {
+  height: 44px;
+}
+.button-filled--lg {
+  height: 56px;
+}
+.button-filled--circle.button-filled--sm {
+  width: 32px;
+}
+.button-filled--circle.button-filled--md {
+  width: 44px;
+}
+.button-filled--circle.button-filled--lg {
+  width: 56px;
 }
 </style>
