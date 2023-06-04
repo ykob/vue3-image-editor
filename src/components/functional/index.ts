@@ -1,3 +1,4 @@
-import SelectFileButton from './SelectFileButton.vue';
+import DownloadImageButton from "./DownloadImageButton.vue";
+import SelectFileButton from "./SelectFileButton.vue";
 
-export { SelectFileButton }
+export { DownloadImageButton, SelectFileButton };
