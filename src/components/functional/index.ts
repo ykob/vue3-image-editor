@@ -1,4 +1,5 @@
+import ControlButtons from "./ControlButtons.vue";
 import DownloadImageButton from "./DownloadImageButton.vue";
 import SelectFileButton from "./SelectFileButton.vue";
 
-export { DownloadImageButton, SelectFileButton };
+export { ControlButtons, DownloadImageButton, SelectFileButton };
