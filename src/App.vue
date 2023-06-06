@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import {
+  ControlButtons,
   DownloadImageButton,
   SelectFileButton,
 } from "./components/functional/";
@@ -16,6 +17,7 @@ onMounted(async () => {
 <template>
   <div>
     <SelectFileButton />
+    <ControlButtons />
     <DownloadImageButton :canvas="canvas" />
     <canvas width="640" height="640" ref="canvas"></canvas>
   </div>
