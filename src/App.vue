@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { reactive } from "vue";
 import {
   ControlButtons,
   DownloadImageButton,
   SelectFileButton,
 } from "./components/functional/";
 
-const canvas = ref<HTMLCanvasElement | null>(null);
-let ctx: CanvasRenderingContext2D | null = null;
+const img = new Image();
 
-onMounted(async () => {
-  ctx = canvas.value?.getContext("2d") ?? null;
+const previewImageParams = reactive({
+  ratioH: 1,
+  ratioW: 1,
+  rotate: 0,
+  scale: 1,
+  translateX: 0,
+  translateY: 0,
 });
 </script>
 
@@ -18,8 +22,7 @@ onMounted(async () => {
   <div>
     <SelectFileButton />
     <ControlButtons />
-    <DownloadImageButton :canvas="canvas" />
-    <canvas width="640" height="640" ref="canvas"></canvas>
+    <DownloadImageButton :img="img" :previewImageParams="previewImageParams" />
   </div>
 </template>
 
