@@ -4,8 +4,6 @@ import { ButtonFilled } from "../ui/";
 import { degreesToRadians } from "../../utils/";
 
 const canvas = ref<HTMLCanvasElement | null>(null);
-let ctx: CanvasRenderingContext2D | null = null;
-
 const props = defineProps({
   img: {
     type: HTMLImageElement,
@@ -24,6 +22,7 @@ const props = defineProps({
     }
   },
 });
+let ctx: CanvasRenderingContext2D | null = null;
 
 const drawCanvasImage = (
   { isDrawingImage }: { isDrawingImage: boolean } = { isDrawingImage: true }
