@@ -40,3 +40,10 @@ const size = computed(() => {
     <path :d="props.path" />
   </svg>
 </template>
+
+<style scope>
+svg {
+  display: block;
+  fill: currentColor;
+}
+</style>
