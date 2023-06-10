@@ -56,6 +56,9 @@ defineEmits(["click"]);
 .button-filled--lg {
   height: 56px;
 }
+.button-filled--basic {
+  letter-spacing: 0.12em;
+}
 .button-filled--basic.button-filled--sm {
   padding-inline: 12px;
 }
