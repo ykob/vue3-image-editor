@@ -27,4 +27,9 @@ defineEmits(["rotateLeft", "rotateRight", "scaleDown", "scaleUp"]);
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.control-buttons {
+  display: flex;
+  gap: 12px;
+}
+</style>

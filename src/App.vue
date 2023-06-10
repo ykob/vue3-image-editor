@@ -20,10 +20,22 @@ const previewImageParams = reactive({
 
 <template>
   <div>
-    <SelectFileButton />
-    <ControlButtons />
-    <DownloadImageButton :img="img" :previewImageParams="previewImageParams" />
+    <div class="controls">
+      <SelectFileButton />
+      <ControlButtons />
+      <DownloadImageButton
+        :img="img"
+        :previewImageParams="previewImageParams"
+      />
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+</style>

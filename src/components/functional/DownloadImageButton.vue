@@ -69,9 +69,14 @@ onMounted(async () => {
 
 <template>
   <div>
-    <ButtonFilled @click="downloadImage"> 画像をダウンロード </ButtonFilled>
+    <ButtonFilled @click="downloadImage"> 画像をダウンロードする </ButtonFilled>
     <canvas width="640" height="640" ref="canvas"></canvas>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+canvas {
+  width: 0;
+  height: 0;
+}
+</style>
