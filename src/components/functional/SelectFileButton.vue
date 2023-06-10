@@ -19,7 +19,7 @@ const clickButton = () => {
       @change="$emit('changeFile', $event)"
     />
     <ButtonFilled class="btn-outline" @click="clickButton">
-      画像をアップロードする
+      ベースとなる画像を選択する
     </ButtonFilled>
   </div>
 </template>
