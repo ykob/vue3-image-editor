@@ -32,8 +32,6 @@ const drawCanvasImage = (
   if (ctx === null) return;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, 640, 640);
-  ctx.arc(320, 320, 320, 0, 2 * Math.PI);
-  ctx.clip();
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, 640, 640);
   ctx.closePath();
