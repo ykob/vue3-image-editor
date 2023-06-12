@@ -140,7 +140,7 @@ const setPreviewImage = () => {
         alt=""
         class="preview-img"
         ref="previewImage"
-        src="./img/blank.png"
+        src="./assets/blank.png"
         :style="previewImageStyle"
       />
     </div>
