@@ -3,7 +3,7 @@ import { onMounted, ref } from "vue";
 import { ButtonFilled } from "../ui/";
 import { degreesToRadians } from "../../utils/";
 
-const SIZE = 640;
+const SIZE = 1024;
 const canvas = ref<HTMLCanvasElement | null>(null);
 const props = defineProps({
   img: {
@@ -78,7 +78,7 @@ onMounted(async () => {
 <template>
   <div>
     <ButtonFilled @click="downloadImage"> 画像をダウンロードする </ButtonFilled>
-    <canvas width="640" height="640" ref="canvas"></canvas>
+    <canvas :width="SIZE" :height="SIZE" ref="canvas"></canvas>
   </div>
 </template>
 
