@@ -8,6 +8,7 @@ import {
 
 const img = new Image();
 const previewImage = ref<HTMLImageElement | null>(null);
+const previewImageSize = 500;
 const previewImageParams = reactive({
   ratioH: 1,
   ratioW: 1,
@@ -25,11 +26,11 @@ let isDraggingForPreview = false;
 const previewImageStyle = computed(() => {
   const { scale, rotate, ratioW, ratioH, translateX, translateY } =
     previewImageParams;
-  const tX = (1 - ratioW) * 0.25 * 500 + translateX;
-  const tY = (1 - ratioH) * 0.25 * 500 + translateY;
+  const tX = (1 - ratioW) * 0.25 * previewImageSize + translateX;
+  const tY = (1 - ratioH) * 0.25 * previewImageSize + translateY;
   return {
-    width: `${ratioW * 500 * 0.5}px`,
-    height: `${ratioH * 500 * 0.5}px`,
+    width: `${ratioW * previewImageSize * 0.5}px`,
+    height: `${ratioH * previewImageSize * 0.5}px`,
     transform: `
     translate(${tX}px, ${tY}px) scale(${scale}) rotate(${rotate}deg)
     `,
@@ -155,6 +156,7 @@ const setPreviewImage = () => {
       <DownloadImageButton
         :img="img"
         :previewImageParams="previewImageParams"
+        :previewImageSize="previewImageSize"
       />
     </div>
   </div>

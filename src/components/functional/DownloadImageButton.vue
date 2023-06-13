@@ -22,14 +22,20 @@ const props = defineProps({
       translateY: 0,
     },
   },
+  previewImageSize: {
+    type: Number,
+    required: true,
+    default: 500,
+  },
 });
 let ctx: CanvasRenderingContext2D | null = null;
 
 const drawCanvasImage = (
   { isDrawingImage }: { isDrawingImage: boolean } = { isDrawingImage: true }
 ) => {
+  const { previewImageParams, previewImageSize } = props;
   const { scale, rotate, ratioW, ratioH, translateX, translateY } =
-    props.previewImageParams;
+    previewImageParams;
   if (ctx === null) return;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, SIZE, SIZE);
@@ -39,8 +45,8 @@ const drawCanvasImage = (
   if (isDrawingImage === true) {
     ctx.translate(SIZE / 2, SIZE / 2);
     ctx.translate(
-      ((translateX * SIZE) / 500) * 2,
-      ((translateY * SIZE) / 500) * 2
+      (translateX * SIZE * 2) / previewImageSize,
+      (translateY * SIZE * 2) / previewImageSize
     );
     ctx.scale(scale, scale);
     ctx.rotate(degreesToRadians(rotate));
