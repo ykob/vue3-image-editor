@@ -8,7 +8,7 @@ import {
 
 const img = new Image();
 const previewImage = ref<HTMLImageElement | null>(null);
-const previewImageSize = 500;
+const previewImageSize = 640;
 const previewImageParams = reactive({
   ratioH: 1,
   ratioW: 1,
@@ -23,6 +23,12 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isDraggingForPreview = false;
 
+const previewImageWrapStyle = computed(() => {
+  return {
+    width: `${previewImageSize * 0.5}px`,
+    height: `${previewImageSize * 0.5}px`,
+  };
+});
 const previewImageStyle = computed(() => {
   const { scale, rotate, ratioW, ratioH, translateX, translateY } =
     previewImageParams;
@@ -134,6 +140,7 @@ const setPreviewImage = () => {
   >
     <div
       class="preview"
+      :style="previewImageWrapStyle"
       @mousedown.prevent="mouseDownForPreview"
       @touchstart.prevent="touchStartForPreview"
     >
