@@ -18,6 +18,7 @@ const props = defineProps({
       ratioW: 1,
       rotate: 0,
       scale: 1,
+      src: "",
       translateX: 0,
       translateY: 0,
     },

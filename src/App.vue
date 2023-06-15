@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
 import {
   ControlButtons,
   DownloadImageButton,
@@ -8,13 +8,13 @@ import {
 } from "./components/functional/";
 
 const img = new Image();
-const previewImage = ref<HTMLImageElement | null>(null);
 const previewImageSize = 640;
 const previewImageParams = reactive({
   ratioH: 1,
   ratioW: 1,
   rotate: 0,
   scale: 1,
+  src: "/blank.png",
   translateX: 0,
   translateY: 0,
 });
@@ -40,8 +40,7 @@ const changeFile = (e: any) => {
       previewImageParams.ratioH = Math.max(1, h / w);
       previewImageParams.ratioW = Math.max(1, w / h);
       previewImageParams.scale = 1;
-
-      setPreviewImage();
+      previewImageParams.src = img.src;
     };
   };
 };
@@ -51,19 +50,15 @@ const translate = (x: number, y: number) => {
 };
 const scaleUp = () => {
   previewImageParams.scale += 0.1;
-  setPreviewImage();
 };
 const scaleDown = () => {
   previewImageParams.scale -= 0.1;
-  setPreviewImage();
 };
 const rotateLeft = () => {
   previewImageParams.rotate -= 10;
-  setPreviewImage();
 };
 const rotateRight = () => {
   previewImageParams.rotate += 10;
-  setPreviewImage();
 };
 const mouseDownForPreview = (e: MouseEvent) => {
   const { clientX, clientY } = e;
@@ -105,10 +100,6 @@ const touchEndForPreview = () => {
   diffYPreview = translateY;
   isDraggingForPreview = false;
 };
-const setPreviewImage = () => {
-  if (previewImage.value === null) return;
-  previewImage.value.src = img.src;
-};
 </script>
 
 <template>
@@ -121,7 +112,6 @@ const setPreviewImage = () => {
     @touchend="touchEndForPreview"
   >
     <PreviewImage
-      :img="previewImage"
       :previewImageParams="previewImageParams"
       :previewImageSize="previewImageSize"
       @mousedown.prevent="mouseDownForPreview"

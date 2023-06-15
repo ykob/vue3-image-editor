@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, watchEffect } from "vue";
 
+const previewImage = ref<HTMLImageElement | null>(null);
 const props = defineProps({
-  img: {
-    type: HTMLImageElement,
-    required: true,
-  },
   previewImageParams: {
     type: Object,
     required: true,
@@ -14,6 +11,7 @@ const props = defineProps({
       ratioW: 1,
       rotate: 0,
       scale: 1,
+      src: "",
       translateX: 0,
       translateY: 0,
     },
@@ -43,6 +41,10 @@ const previewImageStyle = computed(() => {
     `,
   };
 });
+watchEffect(() => {
+  if (previewImage.value === null) return;
+  previewImage.value.src = props.previewImageParams.src;
+});
 </script>
 
 <template>
@@ -56,7 +58,6 @@ const previewImageStyle = computed(() => {
       alt=""
       class="preview-img"
       ref="previewImage"
-      src="../../assets/blank.png"
       :style="previewImageStyle"
     />
   </div>
