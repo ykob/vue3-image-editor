@@ -51,8 +51,8 @@ watchEffect(() => {
   <div
     class="preview"
     :style="previewImageWrapStyle"
-    @mousedown="$emit('mousedown')"
-    @touchstart="$emit('touchstart')"
+    @mousedown="$emit('mousedown', $event)"
+    @touchstart="$emit('touchstart', $event)"
   >
     <img
       alt=""
