@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { reactive, ref } from "vue";
 import {
   ControlButtons,
   DownloadImageButton,
+  PreviewImage,
   SelectFileButton,
 } from "./components/functional/";
 
@@ -23,25 +24,6 @@ let touchStartX = 0;
 let touchStartY = 0;
 let isDraggingForPreview = false;
 
-const previewImageWrapStyle = computed(() => {
-  return {
-    width: `${previewImageSize * 0.5}px`,
-    height: `${previewImageSize * 0.5}px`,
-  };
-});
-const previewImageStyle = computed(() => {
-  const { scale, rotate, ratioW, ratioH, translateX, translateY } =
-    previewImageParams;
-  const tX = (1 - ratioW) * 0.25 * previewImageSize + translateX;
-  const tY = (1 - ratioH) * 0.25 * previewImageSize + translateY;
-  return {
-    width: `${ratioW * previewImageSize * 0.5}px`,
-    height: `${ratioH * previewImageSize * 0.5}px`,
-    transform: `
-    translate(${tX}px, ${tY}px) scale(${scale}) rotate(${rotate}deg)
-    `,
-  };
-});
 const changeFile = (e: any) => {
   const file = e.target.files[0];
   const reader = new FileReader();
@@ -138,20 +120,13 @@ const setPreviewImage = () => {
     @touchmove="touchMoveForPreview"
     @touchend="touchEndForPreview"
   >
-    <div
-      class="preview"
-      :style="previewImageWrapStyle"
+    <PreviewImage
+      :img="previewImage"
+      :previewImageParams="previewImageParams"
+      :previewImageSize="previewImageSize"
       @mousedown.prevent="mouseDownForPreview"
       @touchstart.prevent="touchStartForPreview"
-    >
-      <img
-        alt=""
-        class="preview-img"
-        ref="previewImage"
-        src="./assets/blank.png"
-        :style="previewImageStyle"
-      />
-    </div>
+    />
     <div class="controls">
       <SelectFileButton @change-file="changeFile" />
       <ControlButtons
@@ -176,20 +151,6 @@ const setPreviewImage = () => {
   align-items: center;
   gap: 32px;
   margin-block: 40px;
-}
-.preview {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  cursor: move;
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: #aeaeae;
-}
-.preview img {
-  max-width: 9999px;
-  transform-origin: 50% 50%;
-  pointer-events: none;
 }
 .controls {
   display: flex;
