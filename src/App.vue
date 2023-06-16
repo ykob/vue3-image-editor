@@ -62,6 +62,7 @@ const rotateRight = () => {
 };
 const mouseDownForPreview = (e: MouseEvent) => {
   const { clientX, clientY } = e;
+
   touchStartX = clientX;
   touchStartY = clientY;
   isDraggingForPreview = true;
@@ -70,18 +71,21 @@ const mouseMoveForPreview = (e: MouseEvent) => {
   const { clientX, clientY } = e;
   const diffX = clientX - touchStartX;
   const diffY = clientY - touchStartY;
+
   if (isDraggingForPreview === true) {
     translate(diffX, diffY);
   }
 };
 const mouseUpForPreview = () => {
   const { translateX, translateY } = previewImageParams;
+
   isDraggingForPreview = false;
   diffXPreview = translateX;
   diffYPreview = translateY;
 };
 const touchStartForPreview = (e: TouchEvent) => {
   const touch = e.touches[0];
+
   touchStartX = touch.clientX;
   touchStartY = touch.clientY;
   isDraggingForPreview = true;
@@ -90,12 +94,14 @@ const touchMoveForPreview = (e: TouchEvent) => {
   const touch = e.touches[0];
   const diffX = touch.clientX - touchStartX;
   const diffY = touch.clientY - touchStartY;
+
   if (isDraggingForPreview === true) {
     translate(diffX, diffY);
   }
 };
 const touchEndForPreview = () => {
   const { translateX, translateY } = previewImageParams;
+
   diffXPreview = translateX;
   diffYPreview = translateY;
   isDraggingForPreview = false;
