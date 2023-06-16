@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { ButtonFilled } from "../ui/";
+import { mdiDownloadBoxOutline } from "@mdi/js";
+import { ButtonFilled, IconBase } from "../ui/";
 import { degreesToRadians } from "../../utils/";
 
 const SIZE = 1024;
@@ -78,7 +79,10 @@ onMounted(async () => {
 
 <template>
   <div>
-    <ButtonFilled @click="downloadImage"> 画像をダウンロードする </ButtonFilled>
+    <ButtonFilled @click="downloadImage">
+      <IconBase :path="mdiDownloadBoxOutline" name="" />
+      画像をダウンロードする
+    </ButtonFilled>
     <canvas :width="SIZE" :height="SIZE" ref="canvas"></canvas>
   </div>
 </template>
