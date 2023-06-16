@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { ButtonFilled } from "../ui/";
+import { mdiImageOutline } from "@mdi/js";
+import { ButtonFilled, IconBase } from "../ui/";
 
 defineEmits(["changeFile"]);
 
@@ -19,6 +20,7 @@ const clickButton = () => {
       @change="$emit('changeFile', $event)"
     />
     <ButtonFilled class="btn-outline" @click="clickButton">
+      <IconBase :path="mdiImageOutline" name="" />
       ベースとなる画像を選択する
     </ButtonFilled>
   </div>

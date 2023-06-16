@@ -42,6 +42,7 @@ defineEmits(["click"]);
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   color: #fff;
   background-color: #00c;
   border: 0;
