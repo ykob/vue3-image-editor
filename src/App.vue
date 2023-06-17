@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import {
+  ContentHeader,
   ControlButtons,
   DownloadImageButton,
   PreviewImage,
@@ -117,6 +118,7 @@ const touchEndForPreview = () => {
     @touchmove="touchMoveForPreview"
     @touchend="touchEndForPreview"
   >
+    <ContentHeader />
     <PreviewImage
       :previewImageParams="previewImageParams"
       :previewImageSize="previewImageSize"
