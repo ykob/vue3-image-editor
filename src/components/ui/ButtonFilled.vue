@@ -15,6 +15,11 @@ const props = defineProps({
       return ["sm", "md", "lg"].includes(value);
     },
   },
+  tag: {
+    type: String,
+    required: false,
+    default: "button",
+  },
 });
 
 const classes = computed(() => {
@@ -22,16 +27,16 @@ const classes = computed(() => {
     "button-filled",
     `button-filled--${props.size}`,
     props.circle ? "button-filled--circle" : "button-filled--basic",
-  ]
+  ];
 });
 
 defineEmits(["click"]);
 </script>
 
 <template>
-  <button :class="classes" @click="$emit('click', $event)">
+  <component :class="classes" :is="tag" @click="$emit('click', $event)">
     <slot />
-  </button>
+  </component>
 </template>
 
 <style scoped>
