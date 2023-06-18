@@ -7,10 +7,22 @@ import { ButtonFilled, IconBase } from "../ui/";
   <div class="content-header">
     <h1>Vue3 Image Editor</h1>
     <div class="buttons">
-      <ButtonFilled circle href="" target="_blank" size="sm">
+      <ButtonFilled
+        circle
+        href="https://github.com/ykob/vue3-image-editor"
+        target="_blank"
+        size="sm"
+        tag="a"
+      >
         <IconBase :path="mdiGithub" name="GitHub" size="sm" />
       </ButtonFilled>
-      <ButtonFilled circle href="" target="_blank" size="sm">
+      <ButtonFilled
+        circle
+        href="https://twitter.com/ykob0123"
+        target="_blank"
+        size="sm"
+        tag="a"
+      >
         <IconBase :path="mdiTwitter" name="Twitter" size="sm" />
       </ButtonFilled>
     </div>
