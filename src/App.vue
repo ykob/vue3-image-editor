@@ -40,8 +40,13 @@ const changeFile = (e: any) => {
 
       previewImageParams.ratioH = Math.max(1, h / w);
       previewImageParams.ratioW = Math.max(1, w / h);
+      previewImageParams.rotate = 0;
       previewImageParams.scale = 1;
       previewImageParams.src = img.src;
+      previewImageParams.translateX = 0;
+      previewImageParams.translateY = 0;
+      diffXPreview = 0;
+      diffYPreview = 0;
     };
   };
 };
