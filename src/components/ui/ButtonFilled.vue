@@ -35,7 +35,7 @@ defineEmits(["click"]);
 
 <template>
   <component :class="classes" :is="tag" @click="$emit('click', $event)">
-    <slot />
+    <slot></slot>
   </component>
 </template>
 
