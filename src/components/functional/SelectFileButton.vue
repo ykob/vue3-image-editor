@@ -19,7 +19,11 @@ const clickButton = () => {
       type="file"
       @change="$emit('changeFile', $event)"
     />
-    <ButtonFilled class="btn-outline" @click="clickButton">
+    <ButtonFilled
+      buttonType="secondary"
+      class="btn-outline"
+      @click="clickButton"
+    >
       <IconBase :path="mdiImageOutline" name="" />
       ベースとなる画像を選択する
     </ButtonFilled>
