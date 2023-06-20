@@ -2,6 +2,14 @@
 import { computed } from "vue";
 
 const props = defineProps({
+  buttonType: {
+    type: String,
+    required: false,
+    default: "primary",
+    validator: (value: string) => {
+      return ["primary", "secondary"].includes(value);
+    },
+  },
   circle: {
     type: Boolean,
     required: false,
@@ -25,6 +33,7 @@ const props = defineProps({
 const classes = computed(() => {
   return [
     "button-filled",
+    `button-filled--${props.buttonType}`,
     `button-filled--${props.size}`,
     props.circle ? "button-filled--circle" : "button-filled--basic",
   ];
@@ -49,9 +58,14 @@ defineEmits(["click"]);
   justify-content: center;
   gap: 4px;
   color: #fff;
-  background-color: #00c;
   border: 0;
   border-radius: 9999px;
+}
+.button-filled--primary {
+  background-color: #0891b2;
+}
+.button-filled--secondary {
+  background-color: #475569;
 }
 .button-filled--sm {
   height: 32px;
