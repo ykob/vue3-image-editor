@@ -37,6 +37,7 @@ import { ButtonFilled, IconBase } from "../ui/";
   gap: 24px;
 }
 h1 {
+  line-height: 1;
   margin-block: 0;
   letter-spacing: 0.06em;
 }

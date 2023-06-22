@@ -142,6 +142,8 @@ const touchEndForPreview = () => {
         @rotate-right="rotateRight"
         @rotate-left="rotateLeft"
       />
+    </div>
+    <div class="submits">
       <DownloadImageButton
         :img="img"
         :previewImageParams="previewImageParams"
@@ -164,20 +166,30 @@ const touchEndForPreview = () => {
   .container {
     width: 768px;
     display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: end;
     margin-block: 80px;
   }
   .header {
+    height: 100%;
     grid-column-start: 2;
     grid-row: 1;
+    align-items: start;
   }
   .preview-image {
     grid-column-start: 1;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
   }
   .controls {
+    height: 100%;
     grid-column-start: 2;
     grid-row-start: 2;
+    justify-content: center;
+  }
+  .submits {
+    grid-column-start: 2;
+    grid-row-start: 3;
   }
 }
 .controls {
@@ -185,5 +197,9 @@ const touchEndForPreview = () => {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+}
+.submits {
+  display: flex;
+  justify-content: center;
 }
 </style>

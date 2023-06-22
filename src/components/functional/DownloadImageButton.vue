@@ -91,5 +91,8 @@ onMounted(async () => {
 canvas {
   width: 0;
   height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>
