@@ -112,17 +112,14 @@ const touchEndForPreview = () => {
   diffYPreview = translateY;
   isDraggingForPreview = false;
 };
+document.body.addEventListener("mousemove", mouseMoveForPreview);
+document.body.addEventListener("mouseup", mouseUpForPreview);
+document.body.addEventListener("touchmove", touchMoveForPreview);
+document.body.addEventListener("touchend", touchEndForPreview);
 </script>
 
 <template>
-  <div
-    class="container"
-    ref="root"
-    @mousemove.prevent="mouseMoveForPreview"
-    @mouseup.prevent="mouseUpForPreview"
-    @touchmove="touchMoveForPreview"
-    @touchend="touchEndForPreview"
-  >
+  <div class="container" ref="root">
     <div class="header">
       <ContentHeader />
     </div>
