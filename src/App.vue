@@ -123,13 +123,17 @@ const touchEndForPreview = () => {
     @touchmove="touchMoveForPreview"
     @touchend="touchEndForPreview"
   >
-    <ContentHeader />
-    <PreviewImage
-      :previewImageParams="previewImageParams"
-      :previewImageSize="previewImageSize"
-      @mousedown.prevent="mouseDownForPreview"
-      @touchstart.prevent="touchStartForPreview"
-    />
+    <div class="header">
+      <ContentHeader />
+    </div>
+    <div class="preview-image">
+      <PreviewImage
+        :previewImageParams="previewImageParams"
+        :previewImageSize="previewImageSize"
+        @mousedown.prevent="mouseDownForPreview"
+        @touchstart.prevent="touchStartForPreview"
+      />
+    </div>
     <div class="controls">
       <SelectFileButton @change-file="changeFile" />
       <ControlButtons
@@ -154,6 +158,27 @@ const touchEndForPreview = () => {
   align-items: center;
   gap: 32px;
   margin-block: 40px;
+  margin-inline: auto;
+}
+@media (width >= 1024px) {
+  .container {
+    width: 768px;
+    display: grid;
+    margin-block: 80px;
+  }
+  .header {
+    grid-column-start: 2;
+    grid-row: 1;
+  }
+  .preview-image {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .controls {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
 }
 .controls {
   display: flex;
