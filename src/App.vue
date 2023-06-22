@@ -156,8 +156,8 @@ document.body.addEventListener("touchend", touchEndForPreview);
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  margin-block: 40px;
   margin-inline: auto;
+  padding-block: 40px;
 }
 @media (width >= 1024px) {
   .container {
@@ -165,7 +165,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
     display: grid;
     grid-template-rows: auto 1fr auto;
     align-items: end;
-    margin-block: 80px;
+    padding-block: 80px;
   }
   .header {
     height: 100%;
