@@ -22,13 +22,13 @@ const props = defineProps({
     default: 500,
   },
 });
-const previewImageWrapStyle = computed(() => {
+const previewImageWrapStyles = computed(() => {
   return {
     width: `${props.previewImageSize * 0.5}px`,
     height: `${props.previewImageSize * 0.5}px`,
   };
 });
-const previewImageStyle = computed(() => {
+const previewImageStyles = computed(() => {
   const { scale, rotate, ratioW, ratioH, translateX, translateY } =
     props.previewImageParams;
   const tX = (1 - ratioW) * 0.25 * props.previewImageSize + translateX;
@@ -50,7 +50,7 @@ watchEffect(() => {
 <template>
   <div
     class="preview"
-    :style="previewImageWrapStyle"
+    :style="previewImageWrapStyles"
     @mousedown="$emit('mousedown', $event)"
     @touchstart="$emit('touchstart', $event)"
   >
@@ -58,7 +58,7 @@ watchEffect(() => {
       alt=""
       class="preview-img"
       ref="previewImage"
-      :style="previewImageStyle"
+      :style="previewImageStyles"
     />
   </div>
 </template>
