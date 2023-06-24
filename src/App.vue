@@ -120,38 +120,40 @@ document.body.addEventListener("touchend", touchEndForPreview);
 
 <template>
   <div class="container" ref="root">
-    <div class="header">
-      <ContentHeader />
-    </div>
-    <div class="preview-image">
-      <PreviewImage
-        :previewImageParams="previewImageParams"
-        :previewImageSize="previewImageSize"
-        @mousedown.prevent="mouseDownForPreview"
-        @touchstart.prevent="touchStartForPreview"
-      />
-    </div>
-    <div class="controls">
-      <SelectFileButton @change-file="changeFile" />
-      <ControlButtons
-        @scale-up="scaleUp"
-        @scale-down="scaleDown"
-        @rotate-right="rotateRight"
-        @rotate-left="rotateLeft"
-      />
-    </div>
-    <div class="submits">
-      <DownloadImageButton
-        :img="img"
-        :previewImageParams="previewImageParams"
-        :previewImageSize="previewImageSize"
-      />
+    <div class="container-in">
+      <div class="header">
+        <ContentHeader />
+      </div>
+      <div class="preview-image">
+        <PreviewImage
+          :previewImageParams="previewImageParams"
+          :previewImageSize="previewImageSize"
+          @mousedown.prevent="mouseDownForPreview"
+          @touchstart.prevent="touchStartForPreview"
+        />
+      </div>
+      <div class="controls">
+        <SelectFileButton @change-file="changeFile" />
+        <ControlButtons
+          @scale-up="scaleUp"
+          @scale-down="scaleDown"
+          @rotate-right="rotateRight"
+          @rotate-left="rotateLeft"
+        />
+      </div>
+      <div class="submits">
+        <DownloadImageButton
+          :img="img"
+          :previewImageParams="previewImageParams"
+          :previewImageSize="previewImageSize"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container {
+.container-in {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,8 +161,23 @@ document.body.addEventListener("touchend", touchEndForPreview);
   margin-inline: auto;
   padding-block: 40px;
 }
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.submits {
+  display: flex;
+  justify-content: center;
+}
 @media (width >= 1024px) {
   .container {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .container-in {
     width: 768px;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -188,15 +205,5 @@ document.body.addEventListener("touchend", touchEndForPreview);
     grid-column-start: 2;
     grid-row-start: 3;
   }
-}
-.controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-.submits {
-  display: flex;
-  justify-content: center;
 }
 </style>
