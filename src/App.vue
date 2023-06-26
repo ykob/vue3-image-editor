@@ -161,6 +161,9 @@ document.body.addEventListener("touchend", touchEndForPreview);
   margin-inline: auto;
   padding-block: 40px;
 }
+.grid-header {
+  width: 100%;
+}
 .grid-controls {
   display: flex;
   flex-direction: column;
