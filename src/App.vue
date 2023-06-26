@@ -121,10 +121,10 @@ document.body.addEventListener("touchend", touchEndForPreview);
 <template>
   <div class="container" ref="root">
     <div class="container-in">
-      <div class="header">
+      <div class="grid-header">
         <ContentHeader />
       </div>
-      <div class="preview-image">
+      <div class="grid-preview">
         <PreviewImage
           :previewImageParams="previewImageParams"
           :previewImageSize="previewImageSize"
@@ -132,7 +132,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
           @touchstart.prevent="touchStartForPreview"
         />
       </div>
-      <div class="controls">
+      <div class="grid-controls">
         <SelectFileButton @change-file="changeFile" />
         <ControlButtons
           @scale-up="scaleUp"
@@ -141,7 +141,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
           @rotate-left="rotateLeft"
         />
       </div>
-      <div class="submits">
+      <div class="grid-submits">
         <DownloadImageButton
           :img="img"
           :previewImageParams="previewImageParams"
@@ -161,13 +161,13 @@ document.body.addEventListener("touchend", touchEndForPreview);
   margin-inline: auto;
   padding-block: 40px;
 }
-.controls {
+.grid-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
-.submits {
+.grid-submits {
   display: flex;
   justify-content: center;
 }
@@ -180,28 +180,29 @@ document.body.addEventListener("touchend", touchEndForPreview);
   .container-in {
     width: 768px;
     display: grid;
+    grid-template-columns: 320px auto;
     grid-template-rows: auto 1fr auto;
     align-items: end;
     padding-block: 80px;
   }
-  .header {
+  .grid-header {
     height: 100%;
     grid-column-start: 2;
     grid-row: 1;
     align-items: start;
   }
-  .preview-image {
+  .grid-preview {
     grid-column-start: 1;
     grid-row-start: 1;
     grid-row-end: 4;
   }
-  .controls {
+  .grid-controls {
     height: 100%;
     grid-column-start: 2;
     grid-row-start: 2;
     justify-content: center;
   }
-  .submits {
+  .grid-submits {
     grid-column-start: 2;
     grid-row-start: 3;
   }
