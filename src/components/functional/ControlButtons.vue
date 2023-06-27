@@ -12,16 +12,16 @@ defineEmits(["rotateLeft", "rotateRight", "scaleDown", "scaleUp"]);
 
 <template>
   <div class="control-buttons">
-    <ButtonFilled buttonType="secondary" circle @click="$emit('scaleDown')">
+    <ButtonFilled buttonType="secondary" circle disabled @click="$emit('scaleDown')">
       <IconBase :path="mdiArrowCollapse" name="縮小" />
     </ButtonFilled>
-    <ButtonFilled buttonType="secondary" circle @click="$emit('scaleUp')">
+    <ButtonFilled buttonType="secondary" circle disabled @click="$emit('scaleUp')">
       <IconBase :path="mdiArrowExpand" name="拡大" />
     </ButtonFilled>
-    <ButtonFilled buttonType="secondary" circle @click="$emit('rotateLeft')">
+    <ButtonFilled buttonType="secondary" circle disabled @click="$emit('rotateLeft')">
       <IconBase :path="mdiRotateLeft" name="左回転" />
     </ButtonFilled>
-    <ButtonFilled buttonType="secondary" circle @click="$emit('rotateRight')">
+    <ButtonFilled buttonType="secondary" circle disabled @click="$emit('rotateRight')">
       <IconBase :path="mdiRotateRight" name="右回転" />
     </ButtonFilled>
   </div>

@@ -79,7 +79,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <ButtonFilled @click="downloadImage">
+    <ButtonFilled disabled @click="downloadImage">
       <IconBase :path="mdiDownloadBoxOutline" name="" />
       画像をダウンロードする
     </ButtonFilled>

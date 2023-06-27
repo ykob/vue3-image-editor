@@ -112,4 +112,9 @@ defineEmits(["click"]);
 .button-filled--circle.button-filled--lg {
   width: 56px;
 }
+.button-filled[disabled] {
+  cursor: not-allowed;
+  color: #94a3b8;
+  background-color: #cbd5e1;
+}
 </style>
