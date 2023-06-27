@@ -70,11 +70,17 @@ defineEmits(["click"]);
 .button-filled--primary:hover {
   background-color: #06b6d4;
 }
+.button-filled--primary:active {
+  background-color: #22d3ee;
+}
 .button-filled--secondary {
   background-color: #475569;
 }
 .button-filled--secondary:hover {
   background-color: #64748b;
+}
+.button-filled--secondary:active {
+  background-color: #94a3b8;
 }
 .button-filled--sm {
   height: 32px;
