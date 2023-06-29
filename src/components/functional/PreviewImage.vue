@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from "vue";
+import { mdiImageOutline } from "@mdi/js";
+import { IconBase } from "../ui/";
 
 const previewImage = ref<HTMLImageElement | null>(null);
 const props = defineProps({
@@ -54,6 +56,9 @@ watchEffect(() => {
     @mousedown="$emit('mousedown', $event)"
     @touchstart="$emit('touchstart', $event)"
   >
+    <div v-if="!previewImageParams.isLoaded" class="blank">
+      <IconBase :path="mdiImageOutline" size="120" />
+    </div>
     <img
       alt=""
       class="preview-img"
@@ -68,12 +73,19 @@ watchEffect(() => {
   position: relative;
   cursor: move;
   overflow: hidden;
+  color: #cbd5e1;
   border-radius: 12px;
-  background-color: #aeaeae;
+  background-color: #94a3b8;
 }
 .preview img {
   max-width: 9999px;
   transform-origin: 50% 50%;
   pointer-events: none;
+}
+.blank {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
 }
 </style>
