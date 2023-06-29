@@ -7,6 +7,10 @@ import { degreesToRadians } from "../../utils/";
 const SIZE = 1024;
 const canvas = ref<HTMLCanvasElement | null>(null);
 const props = defineProps({
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   img: {
     type: HTMLImageElement,
     required: true,
@@ -78,7 +82,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <ButtonFilled disabled @click="downloadImage">
+    <ButtonFilled :disabled="props.disabled" @click="downloadImage">
       <IconBase :path="mdiDownloadBoxOutline" name="" />
       画像をダウンロードする
     </ButtonFilled>

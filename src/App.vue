@@ -138,6 +138,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
       <div class="grid-controls">
         <SelectFileButton @change-file="changeFile" />
         <ControlButtons
+          :disabled="!previewImageParams.isLoaded"
           @scale-up="scaleUp"
           @scale-down="scaleDown"
           @rotate-right="rotateRight"
@@ -146,6 +147,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
       </div>
       <div class="grid-submits">
         <DownloadImageButton
+          :disabled="!previewImageParams.isLoaded"
           :img="img"
           :previewImageParams="previewImageParams"
           :previewImageSize="previewImageSize"
