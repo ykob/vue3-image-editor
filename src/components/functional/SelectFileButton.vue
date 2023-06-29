@@ -3,12 +3,13 @@ import { ref } from "vue";
 import { mdiImageOutline } from "@mdi/js";
 import { ButtonFilled, IconBase } from "../ui/";
 
-defineEmits(["changeFile"]);
-
 const input = ref<HTMLInputElement | null>(null);
-const clickButton = () => {
+
+const onClick = () => {
   input.value?.click();
 };
+
+defineEmits(["changeFile"]);
 </script>
 
 <template>
@@ -22,7 +23,7 @@ const clickButton = () => {
     <ButtonFilled
       buttonType="secondary"
       class="btn-outline"
-      @click="clickButton"
+      @click="onClick"
     >
       <IconBase :path="mdiImageOutline" name="" />
       ベースとなる画像を選択する

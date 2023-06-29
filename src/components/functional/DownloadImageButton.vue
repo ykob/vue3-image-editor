@@ -62,7 +62,6 @@ const drawCanvasImage = (
   }
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 };
-
 const downloadImage = () => {
   const a = document.createElement("a");
 

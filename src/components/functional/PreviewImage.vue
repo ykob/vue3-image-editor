@@ -4,6 +4,25 @@ import { mdiImageOutline } from "@mdi/js";
 import { IconBase } from "../ui/";
 
 const previewImage = ref<HTMLImageElement | null>(null);
+const previewImageStyles = computed(() => {
+  const { scale, rotate, ratioW, ratioH, translateX, translateY } =
+    props.previewImageParams;
+  const tX = (1 - ratioW) * 0.25 * props.previewImageSize + translateX;
+  const tY = (1 - ratioH) * 0.25 * props.previewImageSize + translateY;
+  return {
+    width: `${ratioW * props.previewImageSize * 0.5}px`,
+    height: `${ratioH * props.previewImageSize * 0.5}px`,
+    transform: `
+    translate(${tX}px, ${tY}px) scale(${scale}) rotate(${rotate}deg)
+    `,
+  };
+});
+const previewImageWrapStyles = computed(() => {
+  return {
+    width: `${props.previewImageSize * 0.5}px`,
+    height: `${props.previewImageSize * 0.5}px`,
+  };
+});
 const props = defineProps({
   previewImageParams: {
     type: Object,
@@ -24,25 +43,7 @@ const props = defineProps({
     default: 500,
   },
 });
-const previewImageWrapStyles = computed(() => {
-  return {
-    width: `${props.previewImageSize * 0.5}px`,
-    height: `${props.previewImageSize * 0.5}px`,
-  };
-});
-const previewImageStyles = computed(() => {
-  const { scale, rotate, ratioW, ratioH, translateX, translateY } =
-    props.previewImageParams;
-  const tX = (1 - ratioW) * 0.25 * props.previewImageSize + translateX;
-  const tY = (1 - ratioH) * 0.25 * props.previewImageSize + translateY;
-  return {
-    width: `${ratioW * props.previewImageSize * 0.5}px`,
-    height: `${ratioH * props.previewImageSize * 0.5}px`,
-    transform: `
-    translate(${tX}px, ${tY}px) scale(${scale}) rotate(${rotate}deg)
-    `,
-  };
-});
+
 watchEffect(() => {
   if (previewImage.value === null) return;
   previewImage.value.src = props.previewImageParams.src;

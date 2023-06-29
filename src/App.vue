@@ -9,8 +9,8 @@ import {
 } from "./components/functional/";
 
 const img = new Image();
-const previewImageSize = 640;
 const previewImageParams = reactive({
+  isLoaded: false,
   ratioH: 1,
   ratioW: 1,
   rotate: 0,
@@ -19,6 +19,7 @@ const previewImageParams = reactive({
   translateX: 0,
   translateY: 0,
 });
+const previewImageSize = 640;
 let diffXPreview = 0;
 let diffYPreview = 0;
 let touchStartX = 0;
@@ -38,6 +39,7 @@ const changeFile = (e: any) => {
       const w = img.width;
       const h = img.height;
 
+      previewImageParams.isLoaded = true;
       previewImageParams.ratioH = Math.max(1, h / w);
       previewImageParams.ratioW = Math.max(1, w / h);
       previewImageParams.rotate = 0;
@@ -112,6 +114,7 @@ const touchEndForPreview = () => {
   diffYPreview = translateY;
   isDraggingForPreview = false;
 };
+
 document.body.addEventListener("mousemove", mouseMoveForPreview);
 document.body.addEventListener("mouseup", mouseUpForPreview);
 document.body.addEventListener("touchmove", touchMoveForPreview);

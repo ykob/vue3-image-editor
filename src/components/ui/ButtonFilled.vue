@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
+const classes = computed(() => {
+  return [
+    "button-filled",
+    `button-filled--${props.buttonType}`,
+    `button-filled--${props.size}`,
+    props.circle ? "button-filled--circle" : "button-filled--basic",
+  ];
+});
 const props = defineProps({
   buttonType: {
     type: String,
@@ -28,15 +36,6 @@ const props = defineProps({
     required: false,
     default: "button",
   },
-});
-
-const classes = computed(() => {
-  return [
-    "button-filled",
-    `button-filled--${props.buttonType}`,
-    `button-filled--${props.size}`,
-    props.circle ? "button-filled--circle" : "button-filled--basic",
-  ];
 });
 
 defineEmits(["click"]);

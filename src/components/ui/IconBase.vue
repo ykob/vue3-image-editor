@@ -12,7 +12,6 @@ const props = defineProps({
     default: "md",
   },
 });
-
 const size = computed(() => {
   switch (props.size) {
     case "sm":
