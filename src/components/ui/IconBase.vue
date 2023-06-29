@@ -10,9 +10,6 @@ const props = defineProps({
     type: String,
     required: false,
     default: "md",
-    validator: (value: string) => {
-      return ["sm", "md", "lg"].includes(value);
-    },
   },
 });
 
@@ -25,7 +22,7 @@ const size = computed(() => {
     case "lg":
       return "32";
     default:
-      return "24";
+      return props.size;
   }
 });
 </script>
