@@ -57,10 +57,11 @@ watchEffect(() => {
     @mousedown="$emit('mousedown', $event)"
     @touchstart="$emit('touchstart', $event)"
   >
-    <div v-if="!previewImageParams.isLoaded" class="blank">
+    <div v-if="props.previewImageParams.src === ''" class="blank">
       <IconBase :path="mdiImageOutline" size="120" />
     </div>
     <img
+      v-else
       alt=""
       class="preview-img"
       ref="previewImage"

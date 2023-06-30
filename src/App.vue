@@ -15,7 +15,7 @@ const previewImageParams = reactive({
   ratioW: 1,
   rotate: 0,
   scale: 1,
-  src: "/blank.png",
+  src: "",
   translateX: 0,
   translateY: 0,
 });
