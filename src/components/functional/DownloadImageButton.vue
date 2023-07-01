@@ -82,8 +82,8 @@ onMounted(async () => {
 
 <template>
   <div>
-    <ButtonFilled :disabled="props.disabled" @click="downloadImage">
-      <IconBase :path="mdiDownloadBoxOutline" name="" />
+    <ButtonFilled :disabled="props.disabled" size="lg" @click="downloadImage">
+      <IconBase :path="mdiDownloadBoxOutline" name="" size="lg" />
       画像をダウンロードする
     </ButtonFilled>
     <canvas :width="SIZE" :height="SIZE" ref="canvas"></canvas>

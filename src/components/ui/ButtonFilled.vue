@@ -55,7 +55,6 @@ defineEmits(["click"]);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   color: #fff;
   border: 0;
   border-radius: 9999px;
@@ -82,13 +81,18 @@ defineEmits(["click"]);
   background-color: #94a3b8;
 }
 .button-filled--sm {
+  gap: 4px;
   height: 32px;
 }
 .button-filled--md {
+  gap: 4px;
   height: 44px;
 }
 .button-filled--lg {
+  gap: 8px;
   height: 56px;
+  font-size: 16px;
+  font-weight: 700;
 }
 .button-filled--basic {
   letter-spacing: 0.12em;
