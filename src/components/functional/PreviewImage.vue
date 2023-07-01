@@ -19,6 +19,8 @@ const previewImageStyles = computed(() => {
 });
 const previewImageWrapStyles = computed(() => {
   return {
+    cursor: previewImage.value ? "grab" : "none",
+    pointerEvents: previewImage.value ? "auto" : "none",
     width: `${props.previewImageSize * 0.5}px`,
     height: `${props.previewImageSize * 0.5}px`,
   };
@@ -73,7 +75,6 @@ watchEffect(() => {
 <style scoped>
 .preview {
   position: relative;
-  cursor: move;
   overflow: hidden;
   color: #cbd5e1;
   border-radius: 12px;
