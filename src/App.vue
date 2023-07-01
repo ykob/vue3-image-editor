@@ -10,7 +10,6 @@ import {
 
 const img = new Image();
 const previewImageParams = reactive({
-  isLoaded: false,
   ratioH: 1,
   ratioW: 1,
   rotate: 0,
@@ -39,7 +38,6 @@ const changeFile = (e: any) => {
       const w = img.width;
       const h = img.height;
 
-      previewImageParams.isLoaded = true;
       previewImageParams.ratioH = Math.max(1, h / w);
       previewImageParams.ratioW = Math.max(1, w / h);
       previewImageParams.rotate = 0;
@@ -138,7 +136,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
       <div class="grid-controls">
         <SelectFileButton @change-file="changeFile" />
         <ControlButtons
-          :disabled="!previewImageParams.isLoaded"
+          :disabled="previewImageParams.src === ''"
           @scale-up="scaleUp"
           @scale-down="scaleDown"
           @rotate-right="rotateRight"
@@ -147,7 +145,7 @@ document.body.addEventListener("touchend", touchEndForPreview);
       </div>
       <div class="grid-submits">
         <DownloadImageButton
-          :disabled="!previewImageParams.isLoaded"
+          :disabled="previewImageParams.src === ''"
           :img="img"
           :previewImageParams="previewImageParams"
           :previewImageSize="previewImageSize"
